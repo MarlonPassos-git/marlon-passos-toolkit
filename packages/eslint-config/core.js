@@ -1,17 +1,22 @@
 import { defineFlatConfig } from 'eslint-define-config'
 import globals from 'globals'
+// import json from 'eslint-plugin-json'
 import pluginJs from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import tsEslint from 'typescript-eslint'
+// import stylisticJs from '@stylistic/eslint-plugin-js'
 
 /// <reference types="@eslint-types/typescript-eslint" />
 export default defineFlatConfig([
-  { files: ['**/*.{js,mjs,cjs,ts}'] },
-  { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tsEslint.configs.recommended,
-  stylistic.configs['recommended-flat'],
   {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    ...stylistic.configs['recommended-flat'],
+  },
+  {
+    languageOptions: { globals: globals.browser },
+    files: ['**/*.{js,mjs,cjs,ts}'],
     rules: {
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -50,6 +55,17 @@ export default defineFlatConfig([
       'no-warning-comments': [
         'error',
       ],
+    },
+  },
+  {
+    files: ['*.json'],
+    plugins: {
+      '@stylistic/js': stylistic,
+    },
+    rules: {
+      'indent': ['error', 2],
+      'quotes': ['error', 'double'],
+      '@stylistic/js/quote-props': ['error', 'always'],
     },
   },
 ])
