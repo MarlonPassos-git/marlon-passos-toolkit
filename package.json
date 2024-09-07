@@ -1,5 +1,5 @@
 {
-  "name": "marlon-passos-toolkit",
+  "name": "m-p-toolkit",
   "private": true,
   "scripts": {
     "build": "turbo build",

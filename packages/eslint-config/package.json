@@ -1,5 +1,6 @@
 {
-  "name": "@repo/eslint-config",
+  "name": "@m-p-toolkit/eslint-config",
+  "description": "Personal ESLint configuration from Marlon Passos",
   "version": "0.0.1",
   "type": "module",
   "main": "core.js",
@@ -8,6 +9,12 @@
   "scripts": {
     "lint": "eslint -c ./core.js --fix ."
   },
+  "license": "MIT",
+  "repository": {
+    "directory": "packages/eslint-config",
+    "url": "MarlonPassos-git/marlon-passos-toolkit"
+  },
+  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/eslint-config",
   "exports": {
     ".": {
       "import": "./core.js",
