@@ -1,6 +1,6 @@
 {
   "name": "m-p-toolkit",
-  "private": true,
+      "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
