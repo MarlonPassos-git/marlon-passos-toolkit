@@ -3,6 +3,7 @@
   "lockFileMaintenance": {
     "enabled": false
   },
+  "dependencyDashboard": true
   "packageRules": [
     {
       "groupName": "all dependencies",
