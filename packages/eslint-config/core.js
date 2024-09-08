@@ -1,10 +1,9 @@
 import { defineFlatConfig } from 'eslint-define-config'
+import eslintPluginJsonc from 'eslint-plugin-jsonc'
 import globals from 'globals'
-// import json from 'eslint-plugin-json'
 import pluginJs from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import tsEslint from 'typescript-eslint'
-// import stylisticJs from '@stylistic/eslint-plugin-js'
 
 /// <reference types="@eslint-types/typescript-eslint" />
 export default defineFlatConfig([
@@ -57,15 +56,14 @@ export default defineFlatConfig([
       ],
     },
   },
+  ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
   {
-    files: ['*.json'],
-    plugins: {
-      '@stylistic/js': stylistic,
-    },
     rules: {
-      'indent': ['error', 2],
-      'quotes': ['error', 'double'],
-      '@stylistic/js/quote-props': ['error', 'always'],
+      'jsonc/indent': ['error',
+        2,
+        {},
+      ],
     },
+
   },
 ])

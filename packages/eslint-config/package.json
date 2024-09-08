@@ -26,14 +26,14 @@
     }
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "2.6.1",
+    "@stylistic/eslint-plugin": "2.7.2",
     "eslint-define-config": "2.1.0",
+    "eslint-plugin-jsonc": "^2.16.0",
     "globals": "^15.8.0",
-    "typescript-eslint": "^7.16.1"
+    "typescript-eslint": "^8.0.0"
   },
   "devDependencies": {
-    "eslint": "^9.7.0",
-    "typescript-eslint": "^7.16.1"
+    "eslint": "^9.7.0"
   },
   "peerDependencies": {
     "eslint": "^9.7.0"
