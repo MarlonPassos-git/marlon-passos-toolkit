@@ -1,0 +1,27 @@
+{
+  "name": "Marlon Passos Toolkit",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pnpm": {
+      "version": "9.9.0"
+    },
+    "ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store": {}
+  },
+  "postCreateCommand": "pnpm i",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.formatDocument": "always",
+          "source.fixAll.eslint": "always",
+          "source.fixAll.ts": "always"
+        }
+      }
+    }
+  }
+}
