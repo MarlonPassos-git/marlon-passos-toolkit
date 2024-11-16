@@ -9,13 +9,14 @@ pnpm install -D 'https://gitpkg.vercel.app/MarlonPassos-git/marlon-passos-toolki
 ```
 
 ## Usage 
+This eslint configuration is only compatible with the new eslint file standard like `eslint.config.{mjs|cjs|js}`
 
 ### Simple 
 
 ```js
 import config from '@m-p-toolkit/eslint-config'
 
-export default config,
+export default config
 ```
 
 ### Extending configurations
