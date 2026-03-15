@@ -9,11 +9,7 @@
     "./node.json": "./node.json",
     "./react.json": "./react.json"
   },
-  "files": [
-    "base.json",
-    "node.json",
-    "react.json"
-  ],
+  "files": ["base.json", "node.json", "react.json"],
   "scripts": {
     "lint": "biome check .",
     "format": "biome format --write ."

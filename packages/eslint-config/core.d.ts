@@ -1,5 +1,6 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { FlatESLintConfig } from "eslint-define-config";
 
-declare const config: FlatESLintConfig
+declare const config: FlatESLintConfig;
 
-export default config
+// biome-ignore lint/style/noDefaultExport: This is the entry point of the ESLint config package
+export default config;

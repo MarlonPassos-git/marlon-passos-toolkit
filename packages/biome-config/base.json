@@ -50,12 +50,7 @@
       "style": {
         "useConst": "error",
         "useTemplate": "error",
-        "useImportType": {
-          "level": "error",
-          "options": {
-            "style": "separatedType"
-          }
-        }
+        "useImportType": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "error",
