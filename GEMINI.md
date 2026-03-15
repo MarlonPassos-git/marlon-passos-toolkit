@@ -7,7 +7,7 @@ A personal monorepo containing configurations and utilities for projects by Marl
 - **Architecture:** Monorepo using `pnpm` workspaces and `Turborepo`.
 - **Main Technologies:** TypeScript, Biome, Turborepo, pnpm.
 - **Goal:** Centralize personal project configurations (ESLint and Biome).
-- **Package Manager:** `pnpm` (configured at version `9.12.3`).
+- **Package Manager:** `pnpm` (configured at version `10.29.3`).
 
 ## Directory Structure
 

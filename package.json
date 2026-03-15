@@ -8,10 +8,10 @@
     "format": "turbo format"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.3.15",
     "turbo": "^2.8.17"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@10.29.3",
   "engines": {
     "node": ">=18"
   }
