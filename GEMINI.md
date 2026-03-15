@@ -20,7 +20,7 @@ A personal monorepo containing configurations and utilities for projects by Marl
     - `node.json` is configured for Node.js environments (allowing Node modules, enforcing protocol-prefixed imports).
     - `react.json` includes React-specific rules (a11y, hooks, security).
 - `.github/workflows/`: CI/CD configurations.
-  - `main.yml`: Automates linting and publishing to NPM via `workflow_dispatch`.
+  - `main.yml`: Automates linting and publishing to NPM via `workflow_dispatch` (uses Node 24 and Actions v5/v6).
 - `renovate.json`: Configures Renovate for dependency updates with a schedule (January and July).
 
 ## Building and Running

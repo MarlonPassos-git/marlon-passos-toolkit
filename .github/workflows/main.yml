@@ -24,11 +24,11 @@ jobs:
     name: Lint and Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20.x'
+          node-version: '24.x'
           cache: pnpm
       - run: pnpm install
       - run: pnpm lint
@@ -39,11 +39,11 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'eslint-config' || github.event.inputs.package == 'all')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20.x'
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
       - run: pnpm install
@@ -58,11 +58,11 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'biome-config' || github.event.inputs.package == 'all')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20.x'
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
       - run: pnpm install
