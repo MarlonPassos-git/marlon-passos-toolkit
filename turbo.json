@@ -8,6 +8,11 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
+      "inputs": ["**/*.ts", "**/*.js", "**/*.json", "biome.json"],
+      "cache": true
+    },
+    "format": {
+      "inputs": ["**/*.ts", "**/*.js", "**/*.json", "biome.json"],
       "cache": true
     },
     "dev": {

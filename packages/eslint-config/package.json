@@ -7,7 +7,8 @@
   "types": "core.d.ts",
   "module": "core.js",
   "scripts": {
-    "lint": "eslint -c ./core.js --fix ."
+    "lint": "biome check .",
+    "format": "biome format --write ."
   },
   "license": "MIT",
   "repository": {
