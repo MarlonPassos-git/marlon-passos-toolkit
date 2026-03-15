@@ -1,6 +1,6 @@
 {
   "name": "m-p-toolkit",
-      "private": true,
+  "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "turbo": "^2.1.1",
-    "typescript": "^5.4.5"
+    "turbo": "^2.8.17",
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
