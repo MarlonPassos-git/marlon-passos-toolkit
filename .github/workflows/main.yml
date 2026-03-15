@@ -1,4 +1,4 @@
-name: Format and Lint
+name: CI & Publish
 
 on:
   push:
@@ -14,12 +14,10 @@ on:
 
 jobs:
   lint_and_format:
-    name: Run ESLint
+    name: Lint and Format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -27,3 +25,22 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm lint
+
+  publish:
+    name: Publish Packages
+    needs: lint_and_format
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+      - run: pnpm install
+      - name: Publish to NPM
+        run: pnpm publish -r --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
