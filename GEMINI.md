@@ -5,7 +5,7 @@ A personal monorepo containing configurations and utilities for projects by Marl
 ## Project Overview
 
 - **Architecture:** Monorepo using `pnpm` workspaces and `Turborepo`.
-- **Main Technologies:** TypeScript, ESLint (Flat Config), Biome, Turborepo, pnpm.
+- **Main Technologies:** TypeScript, Biome, Turborepo, pnpm.
 - **Goal:** Centralize personal project configurations (ESLint and Biome).
 
 ## Directory Structure
@@ -17,7 +17,7 @@ A personal monorepo containing configurations and utilities for projects by Marl
 
 ## Building and Running
 
-The project uses Turborepo for task orchestration. Key commands from the root:
+The project uses Biome for linting and Turborepo for task orchestration. Key commands from the root:
 
 - **Build all packages:**
   ```bash
@@ -27,9 +27,13 @@ The project uses Turborepo for task orchestration. Key commands from the root:
   ```bash
   pnpm dev
   ```
-- **Lint all packages (ESLint + Biome):**
+- **Lint all projects (using Biome):**
   ```bash
   pnpm lint
+  ```
+- **Format code (using Biome):**
+  ```bash
+  pnpm format
   ```
 
 ## Development Conventions
@@ -39,16 +43,9 @@ The project uses Turborepo for task orchestration. Key commands from the root:
 - Workspace dependencies are managed in `pnpm-workspace.yaml`.
 
 ### Linting & Code Style
-- **ESLint:** Custom configuration in `packages/eslint-config`.
-- **Biome:** Custom configuration in `packages/biome-config`.
-  - Provides `base.json`, `node.json`, and `react.json`.
-  - To use, extend in your `biome.json`: `"extends": ["@m-p-toolkit/biome-config/base.json"]`.
-- Configuration follows the **ESLint Flat Config** and **Biome** standards.
-- Key rules enforced (ESLint):
-  - Strict type imports.
-  - No unused variables (with `_` prefix exception).
-  - Restricted `no-console` (allows `warn`, `error`, `info`).
-  - Specific padding and sorting requirements for imports.
+- **Biome (Primary):** This toolkit uses its own Biome configuration (`@m-p-toolkit/biome-config/node.json`) for linting and formatting.
+- **ESLint:** Provided as an alternative configuration in `packages/eslint-config`.
+- Biome configuration is enforced at the root via `biome.json`.
 
 ### Adding New Packages
 1. Create a new directory in `packages/`.
