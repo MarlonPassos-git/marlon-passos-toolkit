@@ -5,12 +5,19 @@ on:
     branches:
       - main
   pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Selecione o pacote para publicar'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - eslint-config
+          - biome-config
 
 jobs:
   lint_and_format:
@@ -26,10 +33,10 @@ jobs:
       - run: pnpm install
       - run: pnpm lint
 
-  publish:
-    name: Publish Packages
+  publish_eslint:
+    name: Publish ESLint Config
     needs: lint_and_format
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'eslint-config' || github.event.inputs.package == 'all')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,7 +47,26 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
       - run: pnpm install
-      - name: Publish to NPM
-        run: pnpm publish -r --no-git-checks --access public
+      - name: Publish ESLint Config
+        run: pnpm --filter @m-p-toolkit/eslint-config publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish_biome:
+    name: Publish Biome Config
+    needs: lint_and_format
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'biome-config' || github.event.inputs.package == 'all')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+      - run: pnpm install
+      - name: Publish Biome Config
+        run: pnpm --filter @m-p-toolkit/biome-config publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
