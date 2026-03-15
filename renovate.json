@@ -5,8 +5,7 @@
   ],
   "dependencyDashboard": true,
   "schedule": [
-    "in january",
-    "in july"
+    "* * * 1,7 *"
   ],
   "minimumReleaseAge": "30 days",
   "separateMajorMinor": true,
