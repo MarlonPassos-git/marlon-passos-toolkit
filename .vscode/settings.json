@@ -1,5 +1,0 @@
-{
-  "eslint.options": {
-    "overrideConfigFile": "/workspaces/marlonPassos/packages/eslint-config/core.js"
-  }, 
-}

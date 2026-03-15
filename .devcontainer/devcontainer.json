@@ -1,27 +1,34 @@
 {
-  "name": "Marlon Passos Toolkit",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-24-bookworm",
-  "features": {
-    "ghcr.io/devcontainers-contrib/features/pnpm": {
-      "version": "latest"
-    },
-    "ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store": {}
-  },
-  "postCreateCommand": "pnpm i",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "biomejs.biome",
-        "dbaeumer.vscode-eslint"
-      ],
-      "settings": {
-        "editor.defaultFormatter": "biomejs.biome",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-          "source.organizeImports.biome": "always",
-          "source.fixAll.biome": "always"
-        }
-      }
-    }
-  }
+	"name": "Marlon Passos Toolkit",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+	"features": {
+		"ghcr.io/marblejenka/devcontainer-feature/gemini-cli": {
+			"keep_google_api_credentials": true
+		},
+		"ghcr.io/devcontainers-extra/features/pnpm": {
+			"version": "latest"
+		},
+		"ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store": {}
+	},
+	"postCreateCommand": "pnpm install && sudo npm install -g @google/gemini-cli",
+	"customizations": {
+		"vscode": {
+			"extensions": ["biomejs.biome"],
+			"settings": {
+				"editor.defaultFormatter": "biomejs.biome",
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.organizeImports.biome": "always",
+					"source.fixAll.biome": "always"
+				}
+			}
+		}
+	},
+	"mounts": [
+		{
+			"source": "gemini-cli-persistence",
+			"target": "/dc/gemini-cli",
+			"type": "volume"
+		}
+	]
 }

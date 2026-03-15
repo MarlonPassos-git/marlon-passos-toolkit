@@ -9,8 +9,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "turbo": "^2.8.17",
-    "typescript": "^5.9.3"
+    "turbo": "^2.8.17"
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
