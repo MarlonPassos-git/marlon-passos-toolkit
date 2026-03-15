@@ -1,0 +1,39 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["./base.json"],
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "recommended": true,
+        "useKeyWithClickEvents": "off",
+        "useGenericFontNames": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error",
+        "noUnknownPseudoClass": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "error",
+        "noDangerouslySetInnerHtmlWithChildren": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "error",
+        "noCommentText": "error"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "useFragmentSyntax": "error",
+        "useSelfClosingElements": "error"
+      }
+    }
+  },
+  "javascript": {
+    "jsxRuntime": "reactClassic",
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "arrowParentheses": "always"
+    }
+  }
+}

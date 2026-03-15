@@ -1,0 +1,22 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["./base.json"],
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "correctness": {
+        "noNodejsModules": "off"
+      },
+      "style": {
+        "noDefaultExport": "warn",
+        "useNodejsImportProtocol": "error"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "always",
+      "trailingCommas": "all"
+    }
+  }
+}
