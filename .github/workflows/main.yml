@@ -12,12 +12,12 @@ on:
       package:
         description: 'Selecione o pacote para publicar'
         required: true
-        default: 'all'
+        default: 'biome-config'
         type: choice
         options:
-          - all
-          - eslint-config
           - biome-config
+          - eslint-config
+          - all
 
 jobs:
   lint_and_format:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '24.x'
           cache: pnpm
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
       - run: pnpm lint
 
   publish_eslint:
@@ -38,6 +38,9 @@ jobs:
     needs: lint_and_format
     if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'eslint-config' || github.event.inputs.package == 'all')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
@@ -46,9 +49,11 @@ jobs:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
+      - name: Validate ESLint Config package
+        run: pnpm --filter @m-p-toolkit/eslint-config exec npm pack --dry-run
       - name: Publish ESLint Config
-        run: pnpm --filter @m-p-toolkit/eslint-config publish --no-git-checks --access public
+        run: pnpm --filter @m-p-toolkit/eslint-config publish --no-git-checks --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -57,6 +62,9 @@ jobs:
     needs: lint_and_format
     if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'biome-config' || github.event.inputs.package == 'all')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
@@ -65,8 +73,10 @@ jobs:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
+      - name: Validate Biome Config package
+        run: pnpm --filter @m-p-toolkit/biome-config exec npm pack --dry-run
       - name: Publish Biome Config
-        run: pnpm --filter @m-p-toolkit/biome-config publish --no-git-checks --access public
+        run: pnpm --filter @m-p-toolkit/biome-config publish --no-git-checks --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
