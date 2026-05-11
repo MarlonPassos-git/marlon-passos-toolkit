@@ -13,7 +13,8 @@
 	"license": "MIT",
 	"repository": {
 		"directory": "packages/eslint-config",
-		"url": "MarlonPassos-git/marlon-passos-toolkit"
+		"type": "git",
+		"url": "git+https://github.com/MarlonPassos-git/marlon-passos-toolkit.git"
 	},
 	"homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/eslint-config",
 	"exports": {
