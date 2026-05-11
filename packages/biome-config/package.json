@@ -1,7 +1,13 @@
 {
   "name": "@m-p-toolkit/biome-config",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Personal Biome configuration from Marlon Passos",
+  "keywords": [
+    "biome",
+    "biome-config",
+    "formatter",
+    "linter"
+  ],
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -16,8 +22,12 @@
   "files": [
     "base.json",
     "node.json",
-    "react.json"
+    "react.json",
+    "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "biome check .",
     "format": "biome format --write ."
@@ -30,6 +40,11 @@
   },
   "repository": {
     "directory": "packages/biome-config",
-    "url": "MarlonPassos-git/marlon-passos-toolkit"
-  }
+    "type": "git",
+    "url": "git+https://github.com/MarlonPassos-git/marlon-passos-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/issues"
+  },
+  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/biome-config"
 }
