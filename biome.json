@@ -1,7 +1,13 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.15/schema.json",
-  "extends": ["./packages/biome-config/node.json"],
-  "files": {
-    "ignore": ["**/dist/**", "**/node_modules/**"]
-  }
+	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"extends": ["./packages/biome-config/node.json"],
+	"files": {
+		"includes": [
+			"**",
+			"!!**/dist",
+			"!!**/node_modules",
+			"!!**/.turbo",
+			"!!**/.next"
+		]
+	}
 }
