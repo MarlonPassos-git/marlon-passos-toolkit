@@ -23,6 +23,7 @@
     "base.json",
     "node.json",
     "react.json",
+    "CHANGELOG.md",
     "README.md"
   ],
   "publishConfig": {
@@ -46,5 +47,6 @@
   "bugs": {
     "url": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/issues"
   },
-  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/biome-config"
+  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/biome-config#readme",
+  "changelog": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/blob/main/packages/biome-config/CHANGELOG.md"
 }

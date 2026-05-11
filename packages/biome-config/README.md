@@ -55,3 +55,7 @@ Create a `biome.json` file and extend one of the published presets.
 ## Contributing
 
 See the [contributing guide](../../CONTRIBUTING.md).
+
+## Changelog
+
+See the [package changelog](./CHANGELOG.md).
