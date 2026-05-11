@@ -1,21 +1,25 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "dependencyDashboard": true,
-  "schedule": [
-    "* * * 1,7 *"
-  ],
-  "minimumReleaseAge": "30 days",
-  "separateMajorMinor": true,
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
-    }
-  ],
-  "lockFileMaintenance": {
-    "enabled": false
-  }
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended"],
+	"timezone": "America/Sao_Paulo",
+	"dependencyDashboard": true,
+	"schedule": ["* * * 1,7 0,6"],
+	"minimumReleaseAge": "30 days",
+	"internalChecksFilter": "strict",
+	"separateMajorMinor": true,
+	"separateMultipleMajor": true,
+	"vulnerabilityAlerts": {
+		"enabled": true,
+		"labels": ["security", "dependencies"]
+	},
+	"packageRules": [
+		{
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+			"groupName": "all non-major dependencies",
+			"groupSlug": "all-non-major-dependencies"
+		}
+	],
+	"lockFileMaintenance": {
+		"enabled": false
+	}
 }
