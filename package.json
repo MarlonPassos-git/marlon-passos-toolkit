@@ -2,18 +2,17 @@
 	"name": "m-p-toolkit",
 	"private": true,
 	"scripts": {
-		"build": "turbo build",
+		"build": "pnpm -r --if-present build",
 		"changeset": "changeset",
 		"changeset:publish": "changeset publish",
 		"changeset:version": "changeset version",
-		"dev": "turbo dev",
-		"lint": "turbo lint",
-		"format": "turbo format"
+		"dev": "pnpm -r --if-present dev",
+		"lint": "pnpm -r lint",
+		"format": "pnpm -r format"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",
-		"@changesets/cli": "^2.31.0",
-		"turbo": "^2.9.12"
+		"@changesets/cli": "^2.31.0"
 	},
 	"packageManager": "pnpm@10.33.0",
 	"engines": {

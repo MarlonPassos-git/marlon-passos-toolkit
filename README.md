@@ -14,7 +14,6 @@ Monorepo with reusable configuration packages for my projects.
 
 ## Packages
 
-- [`@m-p-toolkit/eslint-config`](./packages/eslint-config/README.md)
 - [`@m-p-toolkit/biome-config`](./packages/biome-config/README.md)
 
 ## Contributing
