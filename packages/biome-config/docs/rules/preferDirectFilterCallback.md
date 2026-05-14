@@ -52,7 +52,7 @@ For this repository:
 > diagnostics into `linter.rules`. This package ships separate `warn` and
 > `error` plugin files so consumers can choose severity while Biome doesn't
 > support per-plugin configuration. See
-> `packages/biome-config/docs/plugin-severity.md` for the rationale and
+> [Plugin severity variants](../plugin-severity.md) for the rationale and
 > migration plan.
 
 ## Description
@@ -161,4 +161,5 @@ does not compile those node names.
 
 - Biome GritQL plugins: https://biomejs.dev/linter/plugins/
 - Biome GritQL reference: https://biomejs.dev/reference/gritql/
+- Plugin severity variants: ../plugin-severity.md
 - Rule style reference: https://biomejs.dev/linter/rules/no-accumulating-spread/

@@ -18,12 +18,15 @@
     "./base.json": "./base.json",
     "./node.json": "./node.json",
     "./react.json": "./react.json",
-    "./plugins/prefer-direct-filter-callback.grit": "./plugins/prefer-direct-filter-callback.grit"
+    "./plugins/prefer-direct-filter-callback.grit": "./plugins/prefer-direct-filter-callback.grit",
+    "./plugins/prefer-direct-filter-callback.warn.grit": "./plugins/prefer-direct-filter-callback.warn.grit",
+    "./plugins/prefer-direct-filter-callback.error.grit": "./plugins/prefer-direct-filter-callback.error.grit"
   },
   "files": [
     "base.json",
     "node.json",
     "react.json",
+    "docs",
     "plugins",
     "CHANGELOG.md",
     "README.md"

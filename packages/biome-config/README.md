@@ -54,17 +54,36 @@ Create a `biome.json` file and extend one of the published presets.
 
 ### Optional Plugins
 
-Biome resolves plugin paths from the consuming project configuration, so add
-package plugins explicitly when you want them enabled.
+The `base` preset declares the warning variant of package plugins. Biome
+currently resolves plugin paths from the consuming project configuration, so
+add package plugins explicitly if the plugin is not loaded through `extends` in
+your project.
 
 ```json
 {
   "extends": ["@m-p-toolkit/biome-config/node"],
   "plugins": [
-    "./node_modules/@m-p-toolkit/biome-config/plugins/prefer-direct-filter-callback.grit"
+    "./node_modules/@m-p-toolkit/biome-config/plugins/prefer-direct-filter-callback.warn.grit"
   ]
 }
 ```
+
+Use the error variant when the diagnostic must fail CI without relying on a
+global warning policy:
+
+```json
+{
+  "extends": ["@m-p-toolkit/biome-config/node"],
+  "plugins": [
+    "./node_modules/@m-p-toolkit/biome-config/plugins/prefer-direct-filter-callback.error.grit"
+  ]
+}
+```
+
+Rule documentation:
+
+- [`preferDirectFilterCallback`](./docs/rules/preferDirectFilterCallback.md)
+- [Plugin severity variants](./docs/plugin-severity.md)
 
 ## Contributing
 

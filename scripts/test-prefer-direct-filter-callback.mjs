@@ -8,13 +8,25 @@ import { fileURLToPath } from "node:url";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = join(scriptDirectory, "..");
-const pluginPath = join(
+const pluginDirectory = join(
 	repositoryRoot,
 	"packages",
 	"biome-config",
 	"plugins",
-	"prefer-direct-filter-callback.grit",
 );
+
+const pluginVariants = [
+	{
+		fileName: "prefer-direct-filter-callback.warn.grit",
+		name: "warning",
+		positiveStatus: 0,
+	},
+	{
+		fileName: "prefer-direct-filter-callback.error.grit",
+		name: "error",
+		positiveStatus: 1,
+	},
+];
 
 const positiveCases = [
 	"const a = accounts.filter((account) => isSuccessfulAccount(account));",
@@ -38,27 +50,25 @@ const negativeCases = [
 	"const a = accounts.filter(function (account) { log(account); return isSuccessfulAccount(account); });",
 ];
 
-async function createTemporaryBiomeProject() {
+async function createTemporaryBiomeProject(pluginFileName) {
 	const projectPath = await mkdtemp(
 		join(tmpdir(), "prefer-direct-filter-callback-"),
 	);
+	const pluginPath = join(pluginDirectory, pluginFileName);
 	const pluginSource = await readFile(pluginPath, "utf8");
 
-	await writeFile(
-		join(projectPath, "prefer-direct-filter-callback.grit"),
-		pluginSource,
-	);
+	await writeFile(join(projectPath, pluginFileName), pluginSource);
 	await writeFile(
 		join(projectPath, "biome.json"),
-		JSON.stringify(createBiomeConfig()),
+		JSON.stringify(createBiomeConfig(pluginFileName)),
 	);
 
 	return projectPath;
 }
 
-function createBiomeConfig() {
+function createBiomeConfig(pluginFileName) {
 	return {
-		plugins: ["./prefer-direct-filter-callback.grit"],
+		plugins: [`./${pluginFileName}`],
 		formatter: { enabled: false },
 		linter: { enabled: true, rules: { recommended: false } },
 	};
@@ -95,33 +105,44 @@ async function checkSource(projectPath, sourceText) {
 	return {
 		hasDiagnostic: hasPluginDiagnostic(result),
 		outputText: `${result.stdout}\n${result.stderr}`.trim(),
+		status: result.status,
 	};
 }
 
 describe("prefer-direct-filter-callback Biome plugin", () => {
-	let projectPath;
+	for (const variant of pluginVariants) {
+		describe(`${variant.name} severity variant`, () => {
+			let projectPath;
 
-	before(async () => {
-		projectPath = await createTemporaryBiomeProject();
-	});
+			before(async () => {
+				projectPath = await createTemporaryBiomeProject(variant.fileName);
+			});
 
-	after(async () => {
-		await rm(projectPath, { recursive: true, force: true });
-	});
+			after(async () => {
+				await rm(projectPath, { recursive: true, force: true });
+			});
 
-	for (const [index, sourceText] of positiveCases.entries()) {
-		it(`reports redundant callback #${index + 1}`, async () => {
-			const result = await checkSource(projectPath, sourceText);
+			for (const [index, sourceText] of positiveCases.entries()) {
+				it(`reports redundant callback #${index + 1}`, async () => {
+					const result = await checkSource(projectPath, sourceText);
 
-			assert.equal(result.hasDiagnostic, true, result.outputText);
-		});
-	}
+					assert.equal(result.hasDiagnostic, true, result.outputText);
+					assert.equal(
+						result.status,
+						variant.positiveStatus,
+						result.outputText,
+					);
+				});
+			}
 
-	for (const [index, sourceText] of negativeCases.entries()) {
-		it(`ignores safe callback #${index + 1}`, async () => {
-			const result = await checkSource(projectPath, sourceText);
+			for (const [index, sourceText] of negativeCases.entries()) {
+				it(`ignores safe callback #${index + 1}`, async () => {
+					const result = await checkSource(projectPath, sourceText);
 
-			assert.equal(result.hasDiagnostic, false, result.outputText);
+					assert.equal(result.hasDiagnostic, false, result.outputText);
+					assert.equal(result.status, 0, result.outputText);
+				});
+			}
 		});
 	}
 });

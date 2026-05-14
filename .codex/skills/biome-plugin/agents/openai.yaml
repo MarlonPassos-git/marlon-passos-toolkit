@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biome Plugin"
+  short_description: "Create Biome GritQL plugins with repo standards"
+  default_prompt: "Create or update a Biome GritQL plugin following this repository's documentation and test standards."
