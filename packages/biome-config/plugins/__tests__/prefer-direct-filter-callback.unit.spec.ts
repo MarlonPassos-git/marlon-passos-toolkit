@@ -11,6 +11,8 @@ const packageRoot = join(scriptDirectory, "..", "..")
 const repositoryRoot = join(packageRoot, "..", "..")
 const pluginDirectory = join(packageRoot, "plugins")
 const biomeBinPath = join(repositoryRoot, "node_modules", "@biomejs", "biome", "bin", "biome")
+const expectedDiagnosticMessage =
+  "Pass the function directly to the method: `.method(fn)`, when the callback only forwards the same argument."
 
 type PluginVariant = {
   fileName: string
@@ -172,6 +174,11 @@ describe("prefer-direct-filter-callback Biome plugin", {
           )
 
           assert.equal(result.hasDiagnostic, true, result.outputText)
+          assert.equal(
+            result.outputText.includes(expectedDiagnosticMessage),
+            true,
+            result.outputText
+          )
           assert.equal(result.status, variant.positiveStatus, result.outputText)
         })
       }

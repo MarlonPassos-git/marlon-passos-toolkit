@@ -18,5 +18,5 @@ JsCallExpression(callee=JsStaticMemberExpression(), arguments=JsCallArguments(ar
   $forwarded_argument <: $parameter,
   $function_name <: JsIdentifierExpression(),
   not $direct_call <: contains `?.`,
-  register_diagnostic(span=$callback, message="Prefira passar a função diretamente para o método: `.method(fn)`, quando o callback apenas repassa o mesmo argumento.", severity="error")
+  register_diagnostic(span=$callback, message="Pass the function directly to the method: `.method(fn)`, when the callback only forwards the same argument.", severity="error")
 }

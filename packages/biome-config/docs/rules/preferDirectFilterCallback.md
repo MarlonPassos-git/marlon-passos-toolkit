@@ -83,7 +83,7 @@ const validAccounts = accounts.filter((account) => isSuccessfulAccount(account))
 ```text
 plugin ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  ! Prefira passar a função diretamente para o método: `.method(fn)`, quando o callback apenas repassa o mesmo argumento.
+  ! Pass the function directly to the method: `.method(fn)`, when the callback only forwards the same argument.
 
   > 1 │ const validAccounts = accounts.filter((account) => isSuccessfulAccount(account));
       │                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
