@@ -17,12 +17,14 @@
     "./react": "./react.json",
     "./base.json": "./base.json",
     "./node.json": "./node.json",
-    "./react.json": "./react.json"
+    "./react.json": "./react.json",
+    "./plugins/prefer-direct-filter-callback.grit": "./plugins/prefer-direct-filter-callback.grit"
   },
   "files": [
     "base.json",
     "node.json",
     "react.json",
+    "plugins",
     "CHANGELOG.md",
     "README.md"
   ],

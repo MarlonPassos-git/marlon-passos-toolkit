@@ -7,8 +7,9 @@
 		"changeset:publish": "changeset publish",
 		"changeset:version": "changeset version",
 		"dev": "pnpm -r --if-present dev",
+		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
-		"format": "pnpm -r format"
+		"test:biome-plugin": "node --test scripts/test-prefer-direct-filter-callback.mjs"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",

@@ -52,6 +52,20 @@ Create a `biome.json` file and extend one of the published presets.
 }
 ```
 
+### Optional Plugins
+
+Biome resolves plugin paths from the consuming project configuration, so add
+package plugins explicitly when you want them enabled.
+
+```json
+{
+  "extends": ["@m-p-toolkit/biome-config/node"],
+  "plugins": [
+    "./node_modules/@m-p-toolkit/biome-config/plugins/prefer-direct-filter-callback.grit"
+  ]
+}
+```
+
 ## Contributing
 
 See the [contributing guide](../../CONTRIBUTING.md).

@@ -1,5 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
   "root": false,
-  "extends": ["./base.json"]
+  "extends": ["./base.json"],
+  "plugins": ["./plugins/prefer-direct-filter-callback.grit"]
 }
