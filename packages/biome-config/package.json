@@ -39,9 +39,6 @@
   "peerDependencies": {
     "@biomejs/biome": "^2.4.0"
   },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.15"
-  },
   "repository": {
     "directory": "packages/biome-config",
     "type": "git",
@@ -50,6 +47,5 @@
   "bugs": {
     "url": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/issues"
   },
-  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/biome-config#readme",
-  "changelog": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/blob/main/packages/biome-config/CHANGELOG.md"
+  "homepage": "https://github.com/MarlonPassos-git/marlon-passos-toolkit/tree/main/packages/biome-config#readme"
 }
