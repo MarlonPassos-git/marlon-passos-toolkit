@@ -55,8 +55,7 @@ plugins today:
 - Use `*.warn.grit` for the default shared preset behavior.
 - Use `*.error.grit` when projects want the diagnostic to fail the Biome
   command.
-- Keep the unsuffixed `*.grit` path only as a compatibility alias when it
-  already exists.
+- Do not keep an unsuffixed `*.grit` file for the same rule.
 
 ## References
 

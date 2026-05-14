@@ -8,7 +8,7 @@ description: Create or update Biome GritQL plugins in this repository. Use when 
 ## Workflow
 
 1. Inspect `packages/biome-config`, root `biome.json`, existing `plugins/`, `.grit/patterns/`, and `scripts/test-*.mjs` before editing.
-2. Put reusable published plugins under `packages/biome-config/plugins/<rule-name>.warn.grit` and `<rule-name>.error.grit` when consumers need severity control. Keep `<rule-name>.grit` only as a compatibility alias.
+2. Put reusable published plugins under `packages/biome-config/plugins/<rule-name>.warn.grit` and `<rule-name>.error.grit` when consumers need severity control. Do not keep an unsuffixed duplicate for the same rule.
 3. Register shared plugins in `packages/biome-config/base.json`; keep explicit root usage in root `biome.json` until Biome loads plugin paths transitively from extended package configs.
 4. Export plugin files from `packages/biome-config/package.json` and include the `plugins` directory in `files`.
 5. Write rule docs in Biome rule-page style. Read `references/rule-doc-template.md` when creating or updating docs.

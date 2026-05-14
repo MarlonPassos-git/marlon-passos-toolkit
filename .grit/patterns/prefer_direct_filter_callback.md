@@ -148,9 +148,6 @@ const validItems = items.filter((item) => isValidItem.call(null, item));
 The production plugin lives at
 `packages/biome-config/plugins/prefer-direct-filter-callback.warn.grit`.
 
-The legacy `packages/biome-config/plugins/prefer-direct-filter-callback.grit`
-path remains as a warning variant for compatibility.
-
 This repository tests the production rule through Biome and a Node native
 `node:test` harness, not through `grit patterns test`, because the rule depends
 on Biome-specific AST node names such as `JsCallExpression`,
