@@ -34,8 +34,7 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "biome check .",
-    "format": "biome format --write ."
+    "check": "biome check --write ."
   },
   "peerDependencies": {
     "@biomejs/biome": "^2.4.0"

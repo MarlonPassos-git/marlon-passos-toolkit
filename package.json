@@ -3,12 +3,11 @@
 	"private": true,
 	"scripts": {
 		"build": "pnpm -r --if-present build",
+		"check": "pnpm -r check",
 		"changeset": "changeset",
 		"changeset:publish": "changeset publish",
 		"changeset:version": "changeset version",
 		"dev": "pnpm -r --if-present dev",
-		"format": "pnpm -r format",
-		"lint": "pnpm -r lint",
 		"test:biome-plugin": "node --test --test-reporter=spec packages/biome-config/plugins/__tests__/prefer-direct-filter-callback.unit.spec.ts"
 	},
 	"devDependencies": {

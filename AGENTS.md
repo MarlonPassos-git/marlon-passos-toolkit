@@ -40,7 +40,7 @@
 ## Formatting
 
 - Use the language default formatter.
-- For this repo, prefer `pnpm format` and `pnpm lint`.
+- For this repo, prefer `pnpm check`.
 
 ## Logging
 

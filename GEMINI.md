@@ -32,13 +32,9 @@ The project uses Biome for linting and pnpm workspace recursion for task orchest
   ```bash
   pnpm dev
   ```
-- **Lint all projects (using Biome):**
+- **Check and format all projects (using Biome):**
   ```bash
-  pnpm lint
-  ```
-- **Format code (using Biome):**
-  ```bash
-  pnpm format
+  pnpm check
   ```
 
 ## Development Conventions
@@ -53,7 +49,7 @@ The project uses Biome for linting and pnpm workspace recursion for task orchest
 - Biome configuration is enforced at the root via `biome.json` which extends `./packages/biome-config/node.json`.
 
 ### CI/CD and Publishing
-- Linting and formatting are verified on every push and PR to `main`.
+- Linting and formatting are verified with `pnpm check` on every push and PR to `main`.
 - Publishing is manual via GitHub Actions (`workflow_dispatch`), allowing selection of specific packages or all packages.
 
 ### Adding New Packages
