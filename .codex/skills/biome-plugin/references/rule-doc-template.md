@@ -19,7 +19,6 @@ Use this shape for local Biome plugin rule docs, mirroring official Biome rule p
 
 ```json
 {
-  "extends": ["@m-p-toolkit/biome-config/node"],
   "plugins": [
     "./node_modules/@m-p-toolkit/biome-config/plugins/<rule-file>.warn.grit"
   ]
@@ -30,7 +29,6 @@ Use the error variant when this rule should fail the command:
 
 ```json
 {
-  "extends": ["@m-p-toolkit/biome-config/node"],
   "plugins": [
     "./node_modules/@m-p-toolkit/biome-config/plugins/<rule-file>.error.grit"
   ]
