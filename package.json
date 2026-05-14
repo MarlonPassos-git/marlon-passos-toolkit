@@ -9,7 +9,7 @@
 		"dev": "pnpm -r --if-present dev",
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
-		"test:biome-plugin": "node --test scripts/test-prefer-direct-filter-callback.mjs"
+		"test:biome-plugin": "node --test --test-reporter=spec packages/biome-config/plugins/__tests__/prefer-direct-filter-callback.unit.spec.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",
