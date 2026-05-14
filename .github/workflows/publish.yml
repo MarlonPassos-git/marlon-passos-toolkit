@@ -1,12 +1,6 @@
-name: CI & Publish
+name: Publish
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       package:
@@ -20,23 +14,9 @@ on:
           - all
 
 jobs:
-  lint_and_format:
-    name: Lint and Format
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24.x'
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-
   publish_eslint:
     name: Publish ESLint Config
-    needs: lint_and_format
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'eslint-config' || github.event.inputs.package == 'all')
+    if: github.event.inputs.package == 'eslint-config' || github.event.inputs.package == 'all'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -59,8 +39,7 @@ jobs:
 
   publish_biome:
     name: Publish Biome Config
-    needs: lint_and_format
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.package == 'biome-config' || github.event.inputs.package == 'all')
+    if: github.event.inputs.package == 'biome-config' || github.event.inputs.package == 'all'
     runs-on: ubuntu-latest
     permissions:
       contents: read
