@@ -1,2 +1,10 @@
+minimumReleaseAge: 43200 # 30 dias
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+blockExoticSubdeps: true
+strictDepBuilds: true
+auditLevel: high
+trustPolicy: no-downgrade
+
 packages:
   - "packages/*"
