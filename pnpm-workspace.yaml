@@ -1,4 +1,4 @@
-minimumReleaseAge: 43200 # 30 dias
+minimumReleaseAge: 43200 # 30 days
 minimumReleaseAgeStrict: true
 minimumReleaseAgeIgnoreMissingTime: false
 blockExoticSubdeps: true
@@ -8,3 +8,14 @@ trustPolicy: no-downgrade
 
 packages:
   - "packages/*"
+
+minimumReleaseAgeExclude:
+  - '@biomejs/biome@2.4.15'
+  - '@biomejs/cli-darwin-arm64@2.4.15'
+  - '@biomejs/cli-darwin-x64@2.4.15'
+  - '@biomejs/cli-linux-arm64-musl@2.4.15'
+  - '@biomejs/cli-linux-arm64@2.4.15'
+  - '@biomejs/cli-linux-x64-musl@2.4.15'
+  - '@biomejs/cli-linux-x64@2.4.15'
+  - '@biomejs/cli-win32-arm64@2.4.15'
+  - '@biomejs/cli-win32-x64@2.4.15'
