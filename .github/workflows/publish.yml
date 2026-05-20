@@ -33,9 +33,7 @@ jobs:
       - name: Validate ESLint Config package
         run: pnpm --filter @m-p-toolkit/eslint-config exec npm pack --dry-run
       - name: Publish ESLint Config
-        run: pnpm --filter @m-p-toolkit/eslint-config publish --no-git-checks --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter @m-p-toolkit/eslint-config exec npm publish --access public --provenance
 
   publish_biome:
     name: Publish Biome Config
@@ -56,6 +54,4 @@ jobs:
       - name: Validate Biome Config package
         run: pnpm --filter @m-p-toolkit/biome-config exec npm pack --dry-run
       - name: Publish Biome Config
-        run: pnpm --filter @m-p-toolkit/biome-config publish --no-git-checks --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter @m-p-toolkit/biome-config exec npm publish --access public --provenance
