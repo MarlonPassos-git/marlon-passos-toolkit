@@ -23,6 +23,7 @@
 
 - Tests run with a single project-specific command.
 - Every new function gets a test. Bug fixes get a regression test.
+- JSON-only changes in `packages/biome-config/*.json` do not require tests.
 - Mock external I/O with named fake classes, not inline stubs.
 - Tests must be F.I.R.S.T: fast, independent, repeatable, self-validating, timely.
 
