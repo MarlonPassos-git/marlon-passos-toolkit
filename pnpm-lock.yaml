@@ -13,7 +13,13 @@ importers:
         version: 2.4.15
       '@changesets/cli':
         specifier: ^2.31.0
-        version: 2.31.0
+        version: 2.31.0(@types/node@24.0.0)
+      '@types/node':
+        specifier: 24.0.0
+        version: 24.0.0
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
 
   packages/biome-config:
     dependencies:
@@ -168,6 +174,9 @@ packages:
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
+
+  '@types/node@24.0.0':
+    resolution: {integrity: sha512-yZQa2zm87aRVcqDyH5+4Hv9KYgSdgwX1rFnGvpbzMaC7YAljmhBET93TPiTd3ObwTL+gSpIzPKg5BqVxdCvxKg==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -442,6 +451,14 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
   universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
@@ -519,7 +536,7 @@ snapshots:
     dependencies:
       '@changesets/types': 6.1.0
 
-  '@changesets/cli@2.31.0':
+  '@changesets/cli@2.31.0(@types/node@24.0.0)':
     dependencies:
       '@changesets/apply-release-plan': 7.1.1
       '@changesets/assemble-release-plan': 6.0.10
@@ -535,7 +552,7 @@ snapshots:
       '@changesets/should-skip-package': 0.1.2
       '@changesets/types': 6.1.0
       '@changesets/write': 0.4.0
-      '@inquirer/external-editor': 1.0.3
+      '@inquirer/external-editor': 1.0.3(@types/node@24.0.0)
       '@manypkg/get-packages': 1.1.3
       ansi-colors: 4.1.3
       enquirer: 2.4.1
@@ -633,10 +650,12 @@ snapshots:
       human-id: 4.1.3
       prettier: 2.8.8
 
-  '@inquirer/external-editor@1.0.3':
+  '@inquirer/external-editor@1.0.3(@types/node@24.0.0)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.2
+    optionalDependencies:
+      '@types/node': 24.0.0
 
   '@manypkg/find-root@1.1.0':
     dependencies:
@@ -667,6 +686,10 @@ snapshots:
       fastq: 1.20.1
 
   '@types/node@12.20.55': {}
+
+  '@types/node@24.0.0':
+    dependencies:
+      undici-types: 7.8.0
 
   ansi-colors@4.1.3: {}
 
@@ -898,6 +921,10 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  typescript@5.9.3: {}
+
+  undici-types@7.8.0: {}
 
   universalify@0.1.2: {}
 
