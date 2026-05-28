@@ -6,12 +6,12 @@ import { dirname, join } from "node:path"
 import { after, before, describe, it } from "node:test"
 import { fileURLToPath } from "node:url"
 
-const scriptDirectory = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(scriptDirectory, "..", "..")
-const repositoryRoot = join(packageRoot, "..", "..")
-const pluginDirectory = join(packageRoot, "plugins")
-const biomeBinPath = join(repositoryRoot, "node_modules", "@biomejs", "biome", "bin", "biome")
-const expectedDiagnosticMessage =
+const SCRIPT_DIRECTORY = dirname(fileURLToPath(import.meta.url))
+const PACKAGE_ROOT = join(SCRIPT_DIRECTORY, "..", "..")
+const REPOSITORY_ROOT = join(PACKAGE_ROOT, "..", "..")
+const PLUGIN_DIRECTORY = join(PACKAGE_ROOT, "plugins")
+const BIOME_BIN_PATH = join(REPOSITORY_ROOT, "node_modules", "@biomejs", "biome", "bin", "biome")
+const EXPECTED_DIAGNOSTIC_MESSAGE =
   "Pass the function directly to the method: `.method(fn)`, when the callback only forwards the same argument."
 
 type PluginVariant = {
@@ -32,7 +32,7 @@ type SourceCheckResult = {
   status: number | null
 }
 
-const pluginVariants: PluginVariant[] = [
+const PLUGIN_VARIANTS: PluginVariant[] = [
   {
     fileName: "prefer-direct-filter-callback.warn.grit",
     name: "warning",
@@ -45,7 +45,7 @@ const pluginVariants: PluginVariant[] = [
   },
 ]
 
-const positiveCases: string[] = [
+const POSITIVE_CASES: string[] = [
   "const a = accounts.filter((account) => isSuccessfulAccount(account));",
   "const a = accounts.find(account => isSuccessfulAccount(account));",
   "const a = accounts.map((account: Account) => normalizeAccount(account));",
@@ -53,7 +53,7 @@ const positiveCases: string[] = [
   "const a = accounts.every(function (account: Account) { return isSuccessfulAccount(account); });",
 ]
 
-const negativeCases: string[] = [
+const NEGATIVE_CASES: string[] = [
   "const a = accounts.filter(isSuccessfulAccount);",
   "const a = accounts.filter((account, index) => isSuccessfulAccount(account, index));",
   "const a = accounts.filter((account) => accountValidator.isSuccessfulAccount(account));",
@@ -69,7 +69,7 @@ const negativeCases: string[] = [
 
 async function createTemporaryBiomeProject(pluginFileName: string): Promise<string> {
   const projectPath = await mkdtemp(join(tmpdir(), "prefer-direct-filter-callback-"))
-  const pluginPath = join(pluginDirectory, pluginFileName)
+  const pluginPath = join(PLUGIN_DIRECTORY, pluginFileName)
   const pluginSource = await readFile(pluginPath, "utf8")
 
   await writeFile(join(projectPath, pluginFileName), pluginSource)
@@ -123,8 +123,8 @@ function runBiomeCheck(sourcePath: string, projectPath: string): Promise<BiomeRu
 function createBiomeProcess(sourcePath: string, projectPath: string) {
   return spawn(
     process.execPath,
-    [biomeBinPath, "check", sourcePath, "--config-path", projectPath],
-    { cwd: repositoryRoot }
+    [BIOME_BIN_PATH, "check", sourcePath, "--config-path", projectPath],
+    { cwd: REPOSITORY_ROOT }
   )
 }
 
@@ -151,7 +151,7 @@ async function checkSource(
 describe("prefer-direct-filter-callback Biome plugin", {
   concurrency: true,
 }, () => {
-  for (const variant of pluginVariants) {
+  for (const variant of PLUGIN_VARIANTS) {
     describe(`${variant.name} severity variant`, { concurrency: true }, () => {
       let projectPath: string
 
@@ -163,7 +163,7 @@ describe("prefer-direct-filter-callback Biome plugin", {
         await rm(projectPath, { recursive: true, force: true })
       })
 
-      for (const [index, sourceText] of positiveCases.entries()) {
+      for (const [index, sourceText] of POSITIVE_CASES.entries()) {
         it(`reports redundant callback #${index + 1}`, {
           concurrency: true,
         }, async () => {
@@ -175,7 +175,7 @@ describe("prefer-direct-filter-callback Biome plugin", {
 
           assert.equal(result.hasDiagnostic, true, result.outputText)
           assert.equal(
-            result.outputText.includes(expectedDiagnosticMessage),
+            result.outputText.includes(EXPECTED_DIAGNOSTIC_MESSAGE),
             true,
             result.outputText
           )
@@ -183,7 +183,7 @@ describe("prefer-direct-filter-callback Biome plugin", {
         })
       }
 
-      for (const [index, sourceText] of negativeCases.entries()) {
+      for (const [index, sourceText] of NEGATIVE_CASES.entries()) {
         it(`ignores safe callback #${index + 1}`, {
           concurrency: true,
         }, async () => {
