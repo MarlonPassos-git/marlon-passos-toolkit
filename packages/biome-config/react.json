@@ -35,5 +35,24 @@
       "jsxQuoteStyle": "double",
       "arrowParentheses": "always"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.jsx", "**/*.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "error",
+              "options": {
+                "strictCase": true,
+                "requireAscii": true,
+                "filenameCases": ["PascalCase"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

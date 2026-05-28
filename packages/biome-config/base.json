@@ -1,6 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
-  "plugins": ["./plugins/prefer-direct-filter-callback.warn.grit"],
+  "plugins": [
+    "./plugins/prefer-direct-filter-callback.warn.grit"
+  ],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -21,15 +23,24 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "a11y": {
+        "useGenericFontNames": "error"
+      },
       "recommended": true,
       "complexity": {
+        "noImportantStyles": "error",
         "noExtraBooleanCast": "error",
         "noUselessCatch": "error"
       },
       "nursery": {
-        "useDestructuring": "warn"
+        "useDestructuring": "warn",
+        "noEmptyObjectKeys": "error",
+        "noTopLevelLiterals": "error"
       },
       "correctness": {
+        "noInvalidDirectionInLinearGradient": "error",
+        "noInvalidGridAreas": "error",
+        "noInvalidPositionAtImportRule": "error",
         "noConstAssign": "error",
         "noConstantCondition": "error",
         "noEmptyCharacterClassInRegex": "error",
@@ -49,14 +60,114 @@
         "useYield": "error"
       },
       "security": {
-        "noDangerouslySetInnerHtml": "error"
+        "noDangerouslySetInnerHtml": "error",
+        "noGlobalEval": "error"
       },
       "style": {
         "useConst": "error",
         "useTemplate": "error",
-        "useImportType": "error"
+        "useImportType": "error",
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": true,
+            "requireAscii": true,
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "const",
+                  "scope": "global"
+                },
+                "formats": [
+                  "CONSTANT_CASE"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "function"
+                },
+                "formats": [
+                  "camelCase",
+                  "PascalCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "class"
+                },
+                "formats": [
+                  "PascalCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "typeLike"
+                },
+                "formats": [
+                  "PascalCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "enumMember"
+                },
+                "formats": [
+                  "CONSTANT_CASE"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "classMember",
+                  "modifiers": [
+                    "private"
+                  ]
+                },
+                "match": "#(.+)",
+                "formats": [
+                  "camelCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "importNamespace"
+                },
+                "formats": [
+                  "camelCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "variable"
+                },
+                "formats": [
+                  "camelCase"
+                ]
+              },
+              {
+                "selector": {
+                  "kind": "functionParameter"
+                },
+                "formats": [
+                  "camelCase"
+                ]
+              }
+            ]
+          }
+        },
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": true,
+            "requireAscii": true,
+            "filenameCases": [
+              "camelCase"
+            ]
+          }
+        },
+        "noMagicNumbers": "warn"
       },
       "suspicious": {
+        "noBiomeFirstException": "error",
         "noArrayIndexKey": "error",
         "noAssignInExpressions": "error",
         "noAsyncPromiseExecutor": "error",
@@ -81,7 +192,9 @@
         "noRedeclare": "error",
         "noShadowRestrictedNames": "error",
         "noUnsafeNegation": "error",
-        "useGetterReturn": "error"
+        "useGetterReturn": "error",
+        "noDuplicateDependencies": "error",
+        "useBiomeIgnoreFolder": "error"
       }
     }
   },
