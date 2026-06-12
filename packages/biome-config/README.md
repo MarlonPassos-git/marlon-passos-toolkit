@@ -17,6 +17,7 @@ Personal Biome configuration shared across Marlon Passos projects.
 - `base`: shared formatter and linter defaults
 - `node`: Node-specific rules on top of `base`
 - `react`: React-specific rules on top of `base`
+- `svelte`: Svelte-specific rules on top of `base`
 
 ## Installation
 
@@ -51,6 +52,18 @@ Create a `biome.json` file and extend one of the published presets.
   "extends": ["@m-p-toolkit/biome-config/react"]
 }
 ```
+
+### Svelte
+
+```json
+{
+  "extends": ["@m-p-toolkit/biome-config/svelte"]
+}
+```
+
+The Svelte preset follows Biome's experimental HTML super-language guidance and
+turns off rules that can report false positives inside `.svelte` files while
+Biome support is still being adjusted.
 
 ### Optional Plugins
 
