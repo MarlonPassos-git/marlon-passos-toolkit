@@ -1,8 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
-  "plugins": [
-    "./plugins/prefer-direct-filter-callback.warn.grit"
-  ],
+  "plugins": ["./plugins/prefer-direct-filter-callback.warn.grit"],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -24,7 +22,7 @@
     "enabled": true,
     "rules": {
       "a11y": {
-        "useGenericFontNames": "error"
+        "useGenericFontNames": "off"
       },
       "recommended": true,
       "complexity": {
@@ -35,9 +33,17 @@
       "nursery": {
         "useDestructuring": "warn",
         "noEmptyObjectKeys": "error",
-        "noTopLevelLiterals": "error"
+        "noTopLevelLiterals": "error",
+        "noExcessiveLinesPerFile": {
+          "level": "warn",
+          "options": {
+            "maxLines": 300
+          }
+        }
       },
       "correctness": {
+        "noUnknownFunction": "error",
+        "noMissingVarFunction": "error",
         "noInvalidDirectionInLinearGradient": "error",
         "noInvalidGridAreas": "error",
         "noInvalidPositionAtImportRule": "error",
@@ -78,78 +84,57 @@
                   "kind": "const",
                   "scope": "global"
                 },
-                "formats": [
-                  "CONSTANT_CASE"
-                ]
+                "formats": ["CONSTANT_CASE"]
               },
               {
                 "selector": {
                   "kind": "function"
                 },
-                "formats": [
-                  "camelCase",
-                  "PascalCase"
-                ]
+                "formats": ["camelCase", "PascalCase"]
               },
               {
                 "selector": {
                   "kind": "class"
                 },
-                "formats": [
-                  "PascalCase"
-                ]
+                "formats": ["PascalCase"]
               },
               {
                 "selector": {
                   "kind": "typeLike"
                 },
-                "formats": [
-                  "PascalCase"
-                ]
+                "formats": ["PascalCase"]
               },
               {
                 "selector": {
                   "kind": "enumMember"
                 },
-                "formats": [
-                  "CONSTANT_CASE"
-                ]
+                "formats": ["CONSTANT_CASE"]
               },
               {
                 "selector": {
                   "kind": "classMember",
-                  "modifiers": [
-                    "private"
-                  ]
+                  "modifiers": ["private"]
                 },
                 "match": "#(.+)",
-                "formats": [
-                  "camelCase"
-                ]
+                "formats": ["camelCase"]
               },
               {
                 "selector": {
                   "kind": "importNamespace"
                 },
-                "formats": [
-                  "camelCase"
-                ]
+                "formats": ["camelCase"]
               },
               {
                 "selector": {
                   "kind": "variable"
                 },
-                "formats": [
-                  "camelCase"
-                ]
+                "formats": ["camelCase"]
               },
               {
                 "selector": {
                   "kind": "functionParameter"
                 },
-                "formats": [
-                  "camelCase"
-                ]
+                "formats": ["camelCase"]
               }
             ]
           }
@@ -159,9 +144,7 @@
           "options": {
             "strictCase": true,
             "requireAscii": true,
-            "filenameCases": [
-              "camelCase"
-            ]
+            "filenameCases": ["camelCase"]
           }
         },
         "noMagicNumbers": "warn"

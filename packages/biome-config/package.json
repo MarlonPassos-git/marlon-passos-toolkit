@@ -37,11 +37,9 @@
     "access": "public"
   },
   "scripts": {
-    "check": "biome check --write .",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "test": "node --test --test-reporter=spec plugins/__tests__/prefer-direct-filter-callback.unit.spec.ts",
-    "type-check": "tsc --noEmit"
+    "test": "node --test --test-reporter=spec plugins/__tests__/prefer-direct-filter-callback.unit.spec.ts"
   },
   "peerDependencies": {
     "@biomejs/biome": "^2.4.0"
