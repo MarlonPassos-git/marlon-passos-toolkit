@@ -3,7 +3,7 @@
 	"private": true,
 	"scripts": {
 		"build": "pnpm -r --if-present build",
-		"check": "pnpm -r check",
+		"check": "pnpm lint && biome check .",
 		"changeset": "changeset",
 		"changeset:publish": "changeset publish",
 		"changeset:version": "changeset version",
@@ -11,7 +11,7 @@
 		"lint": "pnpm -r --if-present lint",
 		"lint:fix": "pnpm -r --if-present lint:fix",
 		"test": "pnpm -r --if-present test",
-		"test:biome-plugin": "node --test --test-reporter=spec packages/biome-config/plugins/__tests__/prefer-direct-filter-callback.unit.spec.ts",
+		"test:biome-plugin": "node --test --test-reporter=spec packages/biome-config/plugins/__tests__/preferDirectFilterCallback.unit.spec.ts",
 		"type-check": "pnpm -r --if-present type-check"
 	},
 	"devDependencies": {

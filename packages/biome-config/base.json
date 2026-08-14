@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
   "plugins": ["./plugins/prefer-direct-filter-callback.warn.grit"],
   "vcs": {
     "enabled": true,
@@ -31,15 +31,8 @@
         "noUselessCatch": "error"
       },
       "nursery": {
-        "useDestructuring": "warn",
         "noEmptyObjectKeys": "error",
-        "noTopLevelLiterals": "error",
-        "noExcessiveLinesPerFile": {
-          "level": "warn",
-          "options": {
-            "maxLines": 300
-          }
-        }
+        "noTopLevelLiterals": "error"
       },
       "correctness": {
         "noUnknownFunction": "error",
@@ -70,6 +63,13 @@
         "noGlobalEval": "error"
       },
       "style": {
+        "useDestructuring": "warn",
+        "noExcessiveLinesPerFile": {
+          "level": "warn",
+          "options": {
+            "maxLines": 300
+          }
+        },
         "useConst": "error",
         "useTemplate": "error",
         "useImportType": "error",

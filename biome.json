@@ -1,10 +1,10 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
 	"extends": ["./packages/biome-config/node.json"],
 	"plugins": [
 		"./packages/biome-config/plugins/prefer-direct-filter-callback.warn.grit"
 	],
 	"files": {
-		"includes": ["**", "!!**/dist", "!!**/node_modules", "!!**/.next"]
+		"includes": ["**", "!!**/dist", "!!**/node_modules", "!!**/.next", "!!tmp"]
 	}
 }
