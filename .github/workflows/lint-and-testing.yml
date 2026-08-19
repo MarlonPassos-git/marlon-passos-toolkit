@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
@@ -22,4 +24,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Run Biome plugin test
         run: pnpm test:biome-plugin
+      - name: Validate Changesets configuration
+        run: pnpm changeset:status --since=origin/main
       - run: pnpm check

@@ -6,6 +6,7 @@
 		"check": "pnpm lint && biome check .",
 		"changeset": "changeset",
 		"changeset:publish": "changeset publish",
+		"changeset:status": "changeset status",
 		"changeset:version": "changeset version",
 		"dev": "pnpm -r --if-present dev",
 		"lint": "pnpm -r --if-present lint",
@@ -17,11 +18,11 @@
 	"devDependencies": {
 		"@types/node": "24.13.3",
 		"@biomejs/biome": "2.5.4",
-		"@changesets/cli": "^2.31.0",
+		"@changesets/cli": "^3.0.1",
 		"typescript": "5.9.3"
 	},
 	"packageManager": "pnpm@11.11.0",
 	"engines": {
-		"node": ">=18"
+		"node": "^22.11 || ^24 || >=26"
 	}
 }
