@@ -10,6 +10,9 @@ packages:
   - "packages/*"
 
 minimumReleaseAgeExclude:
+  # GHSA-52cp-r559-cp3m and GHSA-5p4m-2wfm-xmqj security fixes.
+  - 'js-yaml@3.15.1'
+  - 'js-yaml@4.3.1'
   - '@biomejs/biome@2.4.15'
   - '@biomejs/cli-darwin-arm64@2.4.15'
   - '@biomejs/cli-darwin-x64@2.4.15'
