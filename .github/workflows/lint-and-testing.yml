@@ -25,5 +25,5 @@ jobs:
       - name: Run Biome plugin test
         run: pnpm test:biome-plugin
       - name: Validate Changesets configuration
-        run: pnpm changeset:status
+        run: pnpm changeset:status --since=origin/main
       - run: pnpm check
