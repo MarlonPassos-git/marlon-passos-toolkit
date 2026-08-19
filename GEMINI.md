@@ -7,7 +7,7 @@ A personal monorepo containing configurations and utilities for projects by Marl
 - **Architecture:** Monorepo using `pnpm` workspaces.
 - **Main Technologies:** TypeScript, Biome, pnpm.
 - **Goal:** Centralize personal project configurations with Biome.
-- **Package Manager:** `pnpm` (configured at version `10.33.0`).
+- **Package Manager:** `pnpm` (configured at version `11.11.0`).
 
 ## Directory Structure
 
@@ -42,7 +42,7 @@ The project uses Biome for linting and pnpm workspace recursion for task orchest
 ### Package Management
 - Always use `pnpm` as the package manager.
 - Workspace dependencies are managed in `pnpm-workspace.yaml`.
-- Node version requirement: `>=18`.
+- Node version requirement: `^22.11 || ^24 || >=26`.
 
 ### Linting & Code Style
 - **Biome:** This toolkit uses its own Biome configuration (`@m-p-toolkit/biome-config/node.json`) for linting and formatting.
