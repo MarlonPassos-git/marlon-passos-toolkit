@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Marlon Passos Renovate configuration</title>
+
+  <circle cx="256" cy="256" r="210" fill="#308BE3" />
+
+  <g
+    transform="translate(128 70) scale(1.28)"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="m35 72 17 17M52 51l22 24M69 31l23 26" fill="none" stroke="#D6E9FB" stroke-width="14" />
+    <path
+      d="m52 105 46-46q9-9 18-3l12 11q9 9 0 18l-48 48q-10 10-19 1l-10-10q-9-9 1-19Z"
+      fill="#D6E9FB"
+      stroke="#073C8C"
+      stroke-width="4" />
+    <path d="M70 104v17M88 85v24M106 66v24" fill="none" stroke="#073C8C" stroke-width="3" />
+    <path
+      d="M116 58q18-9 32 8 17 19-4 36l-20 19q-7 7 2 15l11 10"
+      fill="none"
+      stroke="#073C8C"
+      stroke-width="4" />
+    <path d="m126 145 13-13 9 9-13 13Z" fill="#D6E9FB" stroke="#073C8C" stroke-width="4" />
+    <path
+      d="m139 142 40 38q9 9 0 18l-4 4q-9 9-18 0l-38-40Z"
+      fill="#073C8C" />
+  </g>
+
+  <text
+    x="256"
+    y="416"
+    fill="#D6E9FB"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="22"
+    font-weight="700"
+    text-anchor="middle">
+    @m-p-toolkit
+  </text>
+</svg>

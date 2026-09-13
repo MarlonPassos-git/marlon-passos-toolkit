@@ -1,0 +1,97 @@
+name: Release Renovate Config
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: SemVer increment for the Renovate config
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Create annotated tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Calculate next version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          prefix="renovate-config-v"
+          mapfile -t tags < <(git tag --list "${prefix}[0-9]*.[0-9]*.[0-9]*" --sort=-v:refname)
+          latest_tag="${tags[0]:-${prefix}0.0.0}"
+          current_version="${latest_tag#"$prefix"}"
+
+          if [[ ! "$current_version" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "Invalid current Renovate config tag: $latest_tag"
+            exit 1
+          fi
+
+          major="${BASH_REMATCH[1]}"
+          minor="${BASH_REMATCH[2]}"
+          patch="${BASH_REMATCH[3]}"
+
+          case "$BUMP" in
+            major)
+              major=$((major + 1))
+              minor=0
+              patch=0
+              ;;
+            minor)
+              minor=$((minor + 1))
+              patch=0
+              ;;
+            patch)
+              patch=$((patch + 1))
+              ;;
+            *)
+              echo "Invalid SemVer increment: $BUMP; expected patch, minor, or major"
+              exit 1
+              ;;
+          esac
+
+          next_version="${major}.${minor}.${patch}"
+          echo "tag=${prefix}${next_version}" >> "$GITHUB_OUTPUT"
+          echo "version=${next_version}" >> "$GITHUB_OUTPUT"
+      - name: Create and push annotated tag
+        env:
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! -f packages/renovate-config/default.json ]]; then
+            echo "Missing packages/renovate-config/default.json on main"
+            exit 1
+          fi
+
+          if git rev-parse --quiet --verify "refs/tags/$RELEASE_TAG"; then
+            echo "Tag already exists: $RELEASE_TAG"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag --annotate "$RELEASE_TAG" --message "Renovate config v$RELEASE_VERSION"
+          git push origin "refs/tags/$RELEASE_TAG"
+
+          echo "### Renovate config release" >> "$GITHUB_STEP_SUMMARY"
+          echo "Created annotated tag \`$RELEASE_TAG\` from \`$(git rev-parse HEAD)\`." >> "$GITHUB_STEP_SUMMARY"

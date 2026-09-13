@@ -15,6 +15,7 @@ Monorepo with reusable configuration packages for my projects.
 ## Packages
 
 - [`@m-p-toolkit/biome-config`](./packages/biome-config/README.md)
+- [`renovate-config`](./packages/renovate-config/README.md)
 
 ## Contributing
 
