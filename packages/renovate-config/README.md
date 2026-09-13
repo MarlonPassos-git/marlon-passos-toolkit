@@ -1,7 +1,24 @@
-# Renovate configuration
+# `renovate-config`
 
 Shared Renovate preset for Marlon Passos projects. It is consumed directly
 from GitHub and is not published to npm.
+
+## Installation
+
+Create a `renovate.json` file in the consuming repository and extend the tagged
+preset:
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>MarlonPassos-git/marlon-passos-toolkit//packages/renovate-config/default.json#renovate-config-v1.0.0"
+  ]
+}
+```
+
+No npm dependency or package-manager installation is required. The Renovate
+installation reads the preset directly from GitHub.
 
 ## Behavior
 
@@ -21,9 +38,13 @@ from GitHub and is not published to npm.
   receive the `security` and `dependencies` labels.
 - Automerge remains disabled for every update.
 
-## Usage
+## References
 
-To follow the preset from the toolkit's default branch without a tag:
+The tagged reference is recommended for reproducible configuration. The
+current consumers, `mairo-vergara-plus` and `lint-forge`, use
+`renovate-config-v1.0.0`.
+
+To follow the preset from the toolkit's default branch without a tag instead:
 
 ```json
 {
@@ -32,19 +53,6 @@ To follow the preset from the toolkit's default branch without a tag:
   ]
 }
 ```
-
-For reproducible configuration, pin the preset to an annotated tag:
-
-```json
-{
-  "extends": [
-    "github>MarlonPassos-git/marlon-passos-toolkit//packages/renovate-config/default.json#renovate-config-v1.0.0"
-  ]
-}
-```
-
-The current consumers, `mairo-vergara-plus` and `lint-forge`, use
-`renovate-config-v1.0.0`.
 
 The Renovate installation must be able to read both the consumer and this
 repository. Public repositories need no additional preset access; private
@@ -63,3 +71,7 @@ selecting `major` creates the initial `renovate-config-v1.0.0` tag.
 The workflow refuses to overwrite an existing tag and does not create a GitHub
 Release. Consumers must update their pinned reference explicitly; there is no
 custom manager or other automatic tag-reference update at this time.
+
+## Changelog
+
+See the [preset changelog](./CHANGELOG.md).
