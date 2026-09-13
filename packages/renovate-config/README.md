@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../../assets/icon.svg" alt="Marlon Passos Toolkit icon" width="96" height="96" />
+  <img src="./icon.svg" alt="Marlon Passos Renovate configuration icon" width="96" height="96" />
 </p>
 
 # `renovate-config`
