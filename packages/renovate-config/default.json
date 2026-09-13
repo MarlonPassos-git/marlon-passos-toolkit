@@ -1,0 +1,31 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"automerge": false,
+	"dependencyDashboard": true,
+	"extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+	"internalChecksFilter": "strict",
+	"lockFileMaintenance": {
+		"enabled": false
+	},
+	"minimumReleaseAge": "30 days",
+	"minimumReleaseAgeBehaviour": "timestamp-required",
+	"osvVulnerabilityAlerts": true,
+	"packageRules": [
+		{
+			"description": "Group routine non-major dependency updates",
+			"groupName": "all non-major dependencies",
+			"groupSlug": "all-non-major",
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		}
+	],
+	"schedule": ["* 0-3 1 2,8 *"],
+	"separateMajorMinor": true,
+	"timezone": "America/Sao_Paulo",
+	"vulnerabilityAlerts": {
+		"automerge": false,
+		"enabled": true,
+		"labels": ["security", "dependencies"],
+		"minimumReleaseAge": null,
+		"schedule": ["at any time"]
+	}
+}

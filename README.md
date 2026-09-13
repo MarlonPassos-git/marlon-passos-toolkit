@@ -16,6 +16,20 @@ Monorepo with reusable configuration packages for my projects.
 
 - [`@m-p-toolkit/biome-config`](./packages/biome-config/README.md)
 
+## Shared resources
+
+- [Renovate configuration preset](./packages/renovate-config/README.md): keeps
+  dependency updates consistent across projects and is consumed directly from
+  GitHub, optionally pinned to an annotated tag.
+
+```json
+{
+  "extends": [
+    "github>MarlonPassos-git/marlon-passos-toolkit//packages/renovate-config/default.json#renovate-config-v1.0.0"
+  ]
+}
+```
+
 ## Contributing
 
 See the [contributing guide](./CONTRIBUTING.md).
