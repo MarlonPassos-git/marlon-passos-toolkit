@@ -1,5 +1,19 @@
 # @m-p-toolkit/biome-config
 
+## 2.0.0
+
+### Major Changes
+
+- 65489cc: Require Biome 2.5 or newer and migrate promoted lint rules from the nursery group to style.
+
+### Minor Changes
+
+- b7a47b0: Add base naming conventions for variables, parameters, functions, classes, types, global constants, enum members, private class members, and namespace imports.
+
+### Patch Changes
+
+- 15723a6: Add a Svelte preset that follows Biome's experimental HTML super-language guidance for `.svelte` files.
+
 ## 1.0.0
 
 ### Major Changes
